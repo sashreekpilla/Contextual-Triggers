@@ -2,24 +2,24 @@ package com.example.contextualtriggers
 
 import android.annotation.TargetApi
 import android.app.ActivityManager
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import com.example.contextualtriggers.Services.DummyBackgroundService
 
 object ServicesManager {
-    fun startServices(context: Context,services:List<Class<DummyBackgroundService>> = emptyList()) {
+    fun startServices(context: Context,services:List<Class<out Service>> = emptyList()) {
         services.forEach {
-            val service = Intent(context, it)
+            val service = Intent(context, it.javaClass)
             if (!isServiceRunning(
                     context = context,
-                    serviceName = it.name
+                    serviceName = it.javaClass.name
                 )
             ) {
                 context.startForegroundService(service)
             }
         }
-
     }
     @TargetApi(Build.VERSION_CODES.N)
     fun isServiceRunning(context: Context, serviceName: String): Boolean {

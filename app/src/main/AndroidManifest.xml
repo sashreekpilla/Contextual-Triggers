@@ -24,13 +24,21 @@
             android:name=".Services.DummyBackgroundService"
             android:enabled="true" />
         <receiver
-            android:name=".BroadcastReceivers.SystemBootBroadcastReceiver"
+            android:name=".BroadcastReceivers.SystemBootReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".BroadcastReceivers.ActivityTransitionReceiver"
+            android:exported="false"
+            android:permission="com.google.android.gms.permission.ACTIVITY_RECOGNITION">
+            <intent-filter>
+                <action android:name="action.TRANSITIONS_DATA" />
             </intent-filter>
         </receiver>
         <activity

@@ -3,13 +3,16 @@ package com.example.contextualtriggers.BroadcastReceivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.example.contextualtriggers.MainActivity
 import com.example.contextualtriggers.Services.DummyBackgroundService
+import com.example.contextualtriggers.Services.SedentaryBackgroundService
 import com.example.contextualtriggers.ServicesManager
 
-class SystemBootBroadcastReceiver : BroadcastReceiver() {
+class SystemBootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         val services = listOf(
             DummyBackgroundService::class.java,
+            SedentaryBackgroundService::class.java
             //add services here
         )
         if (context != null) {
