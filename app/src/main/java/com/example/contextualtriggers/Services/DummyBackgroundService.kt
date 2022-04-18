@@ -7,8 +7,6 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
-import com.example.contextualtriggers.DataSources.getLocation
-import com.google.android.gms.location.FusedLocationProviderClient
 
 class DummyBackgroundService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -29,15 +27,24 @@ class DummyBackgroundService : Service() {
                 .setContentTitle("Service working").build()
         startForeground(1001, notification)
         Log.d("TAGG", "onStartCommand: System started")
-        val x = FusedLocationProviderClient(this)
-        getLocation(
-            x,
-            { latitude, longitude ->
-
-            }, {
-                println(it)
-            })
-        return super.onStartCommand(intent, flags, startId)
+        val t = Thread {
+            var x = 0;
+            while (true) {
+                x++
+                Thread.sleep(1000)
+                Log.d("TAG", "onStartCommand: Dummy service running")
+            }
+        }
+        t.start()
+//        val x = FusedLocationProviderClient(this)
+//        getLocation(
+//            x,
+//            { latitude, longitude ->
+//
+//            }, {
+//                println(it)
+//            })
+        return START_STICKY
     }
 
     override fun onBind(p0: Intent?): IBinder? {

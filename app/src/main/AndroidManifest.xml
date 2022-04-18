@@ -23,6 +23,9 @@
         <service
             android:name=".Services.DummyBackgroundService"
             android:enabled="true" />
+        <service
+            android:name=".Services.SedentaryBackgroundService"
+            android:enabled="true" />
         <receiver
             android:name=".BroadcastReceivers.SystemBootReceiver"
             android:enabled="true"

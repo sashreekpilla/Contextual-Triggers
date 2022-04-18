@@ -6,18 +6,16 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import com.example.contextualtriggers.Services.DummyBackgroundService
 
 object ServicesManager {
-    fun startServices(context: Context,services:List<Class<out Service>> = emptyList()) {
-        services.forEach {
-            val service = Intent(context, it.javaClass)
+    fun startServices(context: Context, services: List<Class<out Service>> = emptyList()) {
+        for (service in services) {
             if (!isServiceRunning(
                     context = context,
-                    serviceName = it.javaClass.name
+                    serviceName = service.javaClass.name
                 )
             ) {
-                context.startForegroundService(service)
+                context.startForegroundService(Intent(context, service))
             }
         }
     }

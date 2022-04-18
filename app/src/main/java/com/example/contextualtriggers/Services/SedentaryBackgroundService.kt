@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import android.util.Log
 import android.widget.Toast
 import com.example.contextualtriggers.BroadcastReceivers.ActivityTransitionReceiver
 import com.example.contextualtriggers.Utils.ActivityTransitionsUtil
@@ -34,6 +35,7 @@ class SedentaryBackgroundService:Service() {
                 getPendingIntent()
             )
             .addOnSuccessListener {
+                Log.d("TAG", "onReceive: Registered")
                 showToast("successful registration")
             }
             .addOnFailureListener { e: Exception ->
