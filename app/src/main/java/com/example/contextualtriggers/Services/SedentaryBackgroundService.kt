@@ -1,12 +1,14 @@
 package com.example.contextualtriggers.Services
 
-import android.app.PendingIntent
-import android.app.Service
+import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
 import com.example.contextualtriggers.BroadcastReceivers.ActivityTransitionReceiver
+import com.example.contextualtriggers.BroadcastReceivers.SedentaryAlarmReceiver
+import com.example.contextualtriggers.Triggers.SedentaryTrigger
 import com.example.contextualtriggers.Utils.ActivityTransitionsUtil
 import com.example.contextualtriggers.Utils.Constants
 import com.google.android.gms.location.ActivityRecognition
@@ -17,7 +19,22 @@ class SedentaryBackgroundService:Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         client = ActivityRecognition.getClient(this)
         requestForUpdates()
-        return super.onStartCommand(intent, flags, startId)
+        val CHANNEL_ID = "Sedentary Service"
+        val notificationChannel = NotificationChannel(
+            CHANNEL_ID,
+            CHANNEL_ID,
+            NotificationManager.IMPORTANCE_LOW
+        )
+        getSystemService(NotificationManager::class.java).createNotificationChannel(
+            notificationChannel
+        )
+        val notification =
+            Notification.Builder(this, CHANNEL_ID)
+                .setContentText("Service is Running")
+                .setContentTitle("Sub-Heading")
+                .setContentTitle("Service working").build()
+        startForeground(1002, notification)
+        return START_STICKY
     }
 
     override fun onDestroy() {

@@ -7,7 +7,7 @@ import android.content.Intent
 import com.example.contextualtriggers.BroadcastReceivers.SedentaryAlarmReceiver
 
 object SedentaryTrigger {
-    fun trigger(eventType:String,transitionType:String,context:Context) {
+    fun trigger(eventType: String, transitionType: String, context: Context) {
         when (eventType) {
             "STILL" -> {
                 if (transitionType == "ENTER") {
@@ -40,14 +40,21 @@ object SedentaryTrigger {
         }
     }
     private fun getPendingIndent(context: Context): PendingIntent? {
-        val intent =  Intent(context, SedentaryAlarmReceiver::class.java);
-        return PendingIntent.getBroadcast (context, 0, intent, 0)
+        val intent = Intent(context, SedentaryAlarmReceiver::class.java)
+        return PendingIntent.getBroadcast(context, 192837, intent, PendingIntent.FLAG_MUTABLE)
     }
-    private fun setAlarm(context: Context) {
-        val alarmManager =  context.getSystemService(Context.ALARM_SERVICE) as AlarmManager;
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1000 * 3600), getPendingIndent(context));
+
+    fun setAlarm(context: Context) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager;
+        alarmManager.set(
+            AlarmManager.RTC_WAKEUP,
+            1000 * 3600,
+            getPendingIndent(context)
+        );
     }
+
     private fun clearAlarm(context: Context) {
-        getPendingIndent(context)?.cancel()
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager;
+        alarmManager.cancel(getPendingIndent(context))
     }
 }

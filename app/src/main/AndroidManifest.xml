@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
 
     <application
@@ -26,6 +28,10 @@
         <service
             android:name=".Services.SedentaryBackgroundService"
             android:enabled="true" />
+        <receiver
+            android:process=":remote"
+            android:name=".BroadcastReceivers.SedentaryAlarmReceiver">
+        </receiver>
         <receiver
             android:name=".BroadcastReceivers.SystemBootReceiver"
             android:enabled="true"
