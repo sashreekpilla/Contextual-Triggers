@@ -28,6 +28,9 @@
         <service
             android:name=".Services.SedentaryBackgroundService"
             android:enabled="true" />
+        <service
+            android:name=".Services.WITService"
+            android:enabled="true" />
         <receiver
             android:process=":remote"
             android:name=".BroadcastReceivers.SedentaryAlarmReceiver">

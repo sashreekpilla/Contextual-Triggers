@@ -35,7 +35,7 @@ class DummyBackgroundService : Service() {
                 Log.d("TAG", "onStartCommand: Dummy service running")
             }
         }
-        t.start()
+       // t.start()
 //        val x = FusedLocationProviderClient(this)
 //        getLocation(
 //            x,
