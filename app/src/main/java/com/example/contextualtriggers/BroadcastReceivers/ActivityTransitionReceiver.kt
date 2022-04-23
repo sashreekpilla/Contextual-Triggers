@@ -1,18 +1,12 @@
 package com.example.contextualtriggers.BroadcastReceivers
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import com.example.contextualtriggers.Triggers.SedentaryTrigger
 import com.example.contextualtriggers.Utils.ActivityTransitionsUtil
-import com.example.contextualtriggers.Utils.SedentaryTriggerUtils
 import com.google.android.gms.location.ActivityTransitionResult
-import com.google.android.gms.location.DetectedActivity
 import java.text.SimpleDateFormat
 import java.util.*
 

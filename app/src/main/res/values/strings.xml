@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Contextual Triggers</string>
+    <string name="title_activity_authentication_screen">AuthenticationScreen</string>
 </resources>

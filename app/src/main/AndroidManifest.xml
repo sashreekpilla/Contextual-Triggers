@@ -11,9 +11,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ContextualTriggers">
+        <activity
+            android:name=".AuthenticationScreen"
+            android:exported="false"
+            android:label="@string/title_activity_authentication_screen"
+            android:theme="@style/Theme.ContextualTriggers" />
+
         <service
             android:name=".Services.DummyBackgroundService"
             android:enabled="true" />
@@ -29,12 +34,15 @@
             android:name=".Services.SedentaryBackgroundService"
             android:enabled="true" />
         <service
-            android:name=".Services.WITService"
+            android:name=".Services.WeatherService"
             android:enabled="true" />
+        <service
+            android:name=".Services.FoodIntakeService"
+            android:enabled="true" />
+
         <receiver
-            android:process=":remote"
-            android:name=".BroadcastReceivers.SedentaryAlarmReceiver">
-        </receiver>
+            android:name=".BroadcastReceivers.SedentaryAlarmReceiver"
+            android:process=":remote"></receiver>
         <receiver
             android:name=".BroadcastReceivers.SystemBootReceiver"
             android:enabled="true"
@@ -42,6 +50,7 @@
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
@@ -53,6 +62,7 @@
                 <action android:name="action.TRANSITIONS_DATA" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
