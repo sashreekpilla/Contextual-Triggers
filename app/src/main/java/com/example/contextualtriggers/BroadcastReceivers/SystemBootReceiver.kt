@@ -3,10 +3,7 @@ package com.example.contextualtriggers.BroadcastReceivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.example.contextualtriggers.Services.DummyBackgroundService
-import com.example.contextualtriggers.Services.FoodIntakeService
-import com.example.contextualtriggers.Services.WeatherService
-import com.example.contextualtriggers.Services.SedentaryBackgroundService
+import com.example.contextualtriggers.Services.*
 import com.example.contextualtriggers.ServicesManager
 
 class SystemBootReceiver : BroadcastReceiver() {
@@ -15,7 +12,8 @@ class SystemBootReceiver : BroadcastReceiver() {
             DummyBackgroundService::class.java,
             SedentaryBackgroundService::class.java,
             WeatherService::class.java,
-            FoodIntakeService::class.java
+            FoodIntakeService::class.java,
+            GoalService::class.java
             //add services here
         )
         if (context != null) {

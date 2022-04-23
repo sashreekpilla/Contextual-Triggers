@@ -1,6 +1,7 @@
 package com.example.contextualtriggers
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.example.contextualtriggers.Authentication.AuthResultContract
 import com.example.contextualtriggers.DataSources.accessGoogleFit
 import com.example.contextualtriggers.DataSources.getGoal
+import com.example.contextualtriggers.Services.GoalService
 import com.example.contextualtriggers.ui.theme.ContextualTriggersTheme
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -112,6 +114,15 @@ fun Greeting(name: String) {
             }) {
                 Text(text = "Sign in")
             }
+            /*Spacer(modifier = Modifier.padding(top = 10.dp))
+            Button(onClick = {
+                *//*TODO*//*
+                if(!ServicesManager.isServiceRunning(context,GoalService::class.java.name)) {
+                    context.startForegroundService(Intent(context,GoalService::class.java))
+                }
+            }) {
+                Text(text = "Start Service")
+            }*/
         }
     }
 }

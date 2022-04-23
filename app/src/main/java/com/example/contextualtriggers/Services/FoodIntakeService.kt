@@ -53,12 +53,12 @@ class FoodIntakeService : Service() {
                     account = account
                 ) {
                     generateNotification(
-                        "Few you send few more calories you could Have ${
+                        "Burn few more calories to Have ${
                             getFoodNutrition(
                                 it.toDouble()
                             )
                         }",
-                        "",
+                        "Food Intake Trigger",
                         NotificationManager.IMPORTANCE_HIGH,
                         9000,this,intent
                     )

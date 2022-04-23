@@ -39,7 +39,9 @@
         <service
             android:name=".Services.FoodIntakeService"
             android:enabled="true" />
-
+        <service
+            android:name=".Services.GoalService"
+            android:enabled="true" />
         <receiver
             android:name=".BroadcastReceivers.SedentaryAlarmReceiver"
             android:process=":remote"></receiver>
